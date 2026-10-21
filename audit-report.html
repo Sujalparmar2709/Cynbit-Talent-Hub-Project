@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cynbit Backend Technical Audit</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #071521;
+      --panel: #0d2231;
+      --text: #e8f1f5;
+      --muted: #a9bdc8;
+      --accent: #20d5c3;
+      --warning: #ffad66;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 1100px; margin: auto; }
+    h1, h2 { color: var(--accent); }
+    h1 { line-height: 1.2; }
+    section {
+      margin: 1.5rem 0;
+      padding: 1.25rem;
+      background: var(--panel);
+      border: 1px solid #1e4052;
+      border-radius: 10px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: .75rem; border: 1px solid #285064; text-align: left; vertical-align: top; }
+    th { color: var(--accent); }
+    .notice { color: var(--warning); }
+    code { color: #b5f4ec; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Cynbit Backend Technical Audit</h1>
+    <p><strong>Assessment status:</strong> Evidence limited to a local browser check.</p>
+
+    <section>
+      <h2>Executive summary</h2>
+      <p>
+        The supplied address <code>http://localhost:2026/</code> returned
+        <code>ERR_CONNECTION_REFUSED (-102)</code>. The workspace contained no
+        runnable Cynbit application, dependency manifest, or backend source.
+        Therefore no API, authentication, validation, security, or performance
+        issue can be confirmed from the available evidence.
+      </p>
+      <p class="notice">
+        This report is an evidence record, not a claim of access to Cynbit's
+        production systems.
+      </p>
+    </section>
+
+    <section>
+      <h2>Observed evidence</h2>
+      <table>
+        <thead><tr><th>Item</th><th>Observation</th></tr></thead>
+        <tbody>
+          <tr><td>URL</td><td><code>http://localhost:2026/</code></td></tr>
+          <tr><td>Browser result</td><td>Failed to Load Page</td></tr>
+          <tr><td>Error</td><td><code>ERR_CONNECTION_REFUSED (-102)</code></td></tr>
+          <tr><td>Workspace</td><td>Only this report file was present; no runnable application was supplied.</td></tr>
+          <tr><td>Form review</td><td>Contact form was reportedly viewed but not submitted.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Findings</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Category</th><th>Severity</th><th>Evidence and impact</th><th>Recommendation</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>OBS-001</td><td>Availability</td><td>Informational</td>
+            <td>No process was accepting connections on local port 2026. This prevents further local observation.</td>
+            <td>Start the authorized application or provide the correct public URL.</td>
+          </tr>
+          <tr>
+            <td>OBS-002</td><td>API behavior</td><td>Not demonstrated</td>
+            <td>No concrete API request or response payload was supplied.</td>
+            <td>Capture sanitized Network-panel requests while using normal browser flows.</td>
+          </tr>
+          <tr>
+            <td>OBS-003</td><td>Security and authentication</td><td>Not demonstrated</td>
+            <td>No login, protected route, session, security-header, or vulnerability evidence was supplied.</td>
+            <td>Verify only authorized, normal browser behavior; redact cookies and tokens.</td>
+          </tr>
+          <tr>
+            <td>OBS-004</td><td>Validation and performance</td><td>Not demonstrated</td>
+            <td>The form was not submitted and no timing or waterfall data was supplied.</td>
+            <td>Record normal validation responses and basic browser timings if authorized.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Limitations and next steps</h2>
+      <ul>
+        <li>Replace the localhost address with the correct public or authorized test URL.</li>
+        <li>Capture method, path, status, content type, and redacted request/response shapes.</li>
+        <li>Do not include credentials, cookies, tokens, or personal data.</li>
+        <li>Do not describe an issue as a vulnerability unless the supplied evidence demonstrates it.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
